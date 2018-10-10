@@ -5,14 +5,23 @@ class Days extends React.Component {
     return(
       <div>
         <h1>Weather for {this.props.cityState}</h1>
-          <Day />
-          <Day />
-          <Day />
-          <Day />
-          <Day />
-      </div>
-    )
-  }
-}
+        <div className="days">
+          {this.props.data.city.map( (elem, i) => {
+            return (
+              <Day
+                day= {elem.dt}
+                high= {elem.temp_max}
+                low={elem.temp_min}
+                description= {elem.description}
+                icon = {elem.icon}/>
+              )
+            })}
+          </div>
+        </div>
+      )
 
-export default Days;
+
+    }
+  }
+
+  export default Days;

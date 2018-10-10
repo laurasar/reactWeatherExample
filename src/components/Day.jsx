@@ -3,22 +3,23 @@ import React from 'react';
 
 class Day extends React.Component {
   render(){
+    let weekday= new Date(this.props.day).toLocaleDateString('en-US',{weekday:'long'})
+    let datee = new Date(this.props.day).toLocaleDateString('en-US',{month:"short",day:"numeric"})
+    let high = this.props.high;
+    let low = this.props.low;
+    let description = this.props.description;
+    let icon= this.props.icon;
     return(
-      <div className="daytime">
-        <div className="day-night-info">
-          <div className="left-side">
-            <h2>DAY</h2>
-            <div className="temp">
-              81&deg;
-              <span className="label">HI</span>
+      <div className="day">
+        {/* <div className="day-night-info">
+          <div className="left-side"> */}
+            <h2> { weekday } </h2>
+            <h3>{datee}</h3>
+            <img src={process.env.PUBLIC_URL + `/weather_icons/${icon}.png`} alt="weather" />
+            <div className="degrees">
+              <span className="high">{high}&deg;</span>{low}&deg;
             </div>
-            <div className="precipitation">
-              Precipitation: <span>10%</span>
-            </div>
-          </div>
-          <img src={process.env.PUBLIC_URL + "/weather_icons/01d.png"} alt="weather" />
-        </div>
-        <p>Sun and some clouds with a shower or thunderstorm later in the afternoon.</p>
+        <p>{description}</p>
       </div>
     )
   }

@@ -4,7 +4,7 @@ import NightForecast from './NightForecast';
 
 const DetailedForecast = (props) => {
   return(
-    <div>
+    <div className="details">
       <DayForecast/>
       <NightForecast/>
     </div>

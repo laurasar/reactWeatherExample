@@ -2,9 +2,17 @@ import React from 'react';
 import Days from './Days';
 import DetailedForecast from "./DetailedForecast";
 import '../css/weather-app.css';
+import sampleCity from "..//sample-city.js";
 
 
 class WeatherApp extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      city:[],
+      currentDay:{}
+    }
+  }
   today(){
     return new Date().toLocaleDateString('en-US', {
               weekday: 'long',
@@ -21,10 +29,20 @@ class WeatherApp extends React.Component {
     return capsCity.join(' ');
 
   }
+  componentDidMount(){
+    this.setState({
+      city: sampleCity
+    })
+  }
   render(){
     return(
       <div>
-        <Days today= {this.today() } cityState={this.cityName()} />
+        <Days
+          today= {this.today() }
+          cityState={this.cityName()}
+          data={ this.state }
+        
+         />
         <DetailedForecast />
       </div>
     )
